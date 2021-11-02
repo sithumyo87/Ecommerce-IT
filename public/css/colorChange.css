@@ -1,0 +1,14 @@
+*{
+    background-color: #242B2E;
+    font-family: 'Anton', sans-serif;
+    font-family: 'Arimo', sans-serif;
+    font-family: 'Playfair Display', serif;;
+}
+.nav-font{
+    font-size: 18px;
+    color: white;
+}
+.nav-header{
+    font-size: 22px;
+    color: white;
+}
