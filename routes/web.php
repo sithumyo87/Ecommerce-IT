@@ -22,6 +22,8 @@ Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name
 Route::get('/order/{id}', [App\Http\Controllers\FrontendController::class, 'order'])->name('frontend.order');
 
 
+
+
 Route::group(['prefix'=>'admin',['middleware'=>'auth','admin']],function(){
     Route::get('/item', [App\Http\Controllers\ItemController::class, 'index'])->name('item.index');
     Route::get('/item/create', [App\Http\Controllers\ItemController::class, 'create'])->name('item.create');
@@ -30,7 +32,9 @@ Route::group(['prefix'=>'admin',['middleware'=>'auth','admin']],function(){
     Route::put('/item/{id}/edit', [App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
     Route::get('/item/{id}/delete', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.delete');
 
-    Route::get('/order/store', [App\Http\Controllers\OrderController::class, 'index'])->name('order.store');
+    Route::get('/order/store', [App\Http\Controllers\OrderController::class, 'index'])->name('order.index');
+    Route::post('/order/store', [App\Http\Controllers\OrderController::class, 'store'])->name('order.store');
+    Route::post('/order/{id}/check', [App\Http\Controllers\OrderController::class, 'check'])->name('order.check');
 
 });
 

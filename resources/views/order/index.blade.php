@@ -32,19 +32,27 @@
                                 <td>Reject</td>
                                 <td>Completed</td>
                             </tr>
-                            @foreach($orders as $order)
+                            @foreach($orders as $key=>$order)
                                 <tr >
-                                    <td>No</td>
-                                    <td>Customer Name</td>
-                                    <td>Email</td>
-                                    <td>Phone</td>
-                                    <td>Address</td>
-                                    <td>Quantity</td>
-                                    <td>Message</td>
-                                    <td>Status</td>
-                                    <td>Accept</td>
-                                    <td>Reject</td>
-                                    <td>Completed</td>
+                                    <td>{{$key + 1}}</td>
+                                    <td>{{$order->name}}</td>
+                                    <td>{{$order->email}}</td>
+                                    <td>{{$order->phone}}</td>
+                                    <td>{{$order->address}}</td>
+                                    <td>{{$order->quantity}}</td>
+                                    <td>{{$order->message}}</td>
+                                    <td>{{$order->status}}</td>
+                                    <form action="{{route('order.check',$order->id)}}" method="post">@csrf
+                                        <td>
+                                            <button type="submit" class="btn btn-sm btn-primary" value="accept" name="status">Accept</button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-sm btn-danger" value="reject" name="status">Reject</button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-sm btn-success" value="complete" name="status">Completed</button>
+                                        </td>
+                                    </form>
                                 </tr>
                             @endforeach
                             </thead>

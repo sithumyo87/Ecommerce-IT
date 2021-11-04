@@ -5,9 +5,23 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
+
                     <div class="card-header" style="background: #CAD5E2">Order Form</div>
-                    <form action="{{route('')}}" method="POST">@csrf
+                    <form action="{{route('order.store')}}" method="POST">@csrf
                     <div class="card-body">
+                        @if(session('message'))
+                            <div class="mt-3">
+                                <p class="alert alert-success">{{session('message')}}</p>
+                            </div>
+                        @endif
+                            @if(session('errmessage'))
+                                <div class="mt-3">
+                                    <p class="alert alert-danger">{{session('message')}}</p>
+                                </div>
+                            @endif
+                        @foreach($errors->all() as $error)
+                            <p class="alert alert-danger">{{$error}}</p>
+                        @endforeach
                         <div class="list-group text-white">
                             <label for="name">Name</label>
                             <input type="text" name="name" class="form-control">
@@ -36,20 +50,7 @@
                     </div>
                     </form>
                 </div>
-                @if(session('message'))
-                    <div class="mt-3">
-                        <p class="alert alert-success">{{session('message')}}</p>
-                    </div>
-                @endif
-                @if(count($errors) > 0)
-                    <div class="card mt-3">
-                        <div class="card-body ">
-                            @foreach($errors->all() as $error)
-                                <p class="alert alert-danger">{{$error}}</p>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
+
 
             </div>
             <div class="col-md-8">

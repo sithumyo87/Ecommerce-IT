@@ -30,7 +30,7 @@
 font-family: 'Arimo', sans-serif;
 font-family: 'Playfair Display', serif;">
             <div class="container mt-3" >
-            <a class="navbar-brand nav-header" href="#"  style="color: white">IT-ACCESSORIES</a>
+            <a class="navbar-brand nav-header" href="/"  style="color: white">IT-ACCESSORIES</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

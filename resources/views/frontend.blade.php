@@ -8,13 +8,15 @@
                     <div class="card-header" style="background: #CAD5E2">Category</div>
 
                     <div class="card-body">
-                        <a href=""><li class="list-group-item list-group-item-action">Phone</li></a>
-                        <a href=""><li class="list-group-item list-group-item-action">Laptop</li></a>
-                        <a href=""><li class="list-group-item list-group-item-action">Phone Cover</li></a>
-                        <a href=""><li class="list-group-item list-group-item-action">Power Bank</li></a>
-                        <a href=""><li class="list-group-item list-group-item-action">Headphone</li></a>
-                        <a href=""><li class="list-group-item list-group-item-action">Charging</li></a>
-
+                        <form action="{{route('frontend.index')}}" method="GET">@csrf
+                        <a href="/"><li class="list-group-item list-group-item-action">Back</li></a>
+                            <input type="submit" value="Phone" class="list-group-item list-group-item-action" name="category">
+                            <input type="submit" value="Laptop" class="list-group-item list-group-item-action" name="category">
+                            <input type="submit" value="Phone Cover" class="list-group-item list-group-item-action" name="category">
+                            <input type="submit" value="Powerbank" class="list-group-item list-group-item-action" name="category">
+                            <input type="submit" value="Headphone" class="list-group-item list-group-item-action" name="category">
+                            <input type="submit" value="Charging" class="list-group-item list-group-item-action" name="category">
+                        </form>
                     </div>
                 </div>
                 @if(session('message'))
@@ -52,9 +54,9 @@
                             </div>
                             @endforeach
                         </div>
-                        <div class="mt-3 d-flex justify-content-center bg-dark g-0 g-md-1" style="font-size: 18px;">
-                            {{$items->links() }}
-                        </div>
+{{--                        <div class="mt-3 d-flex justify-content-center bg-dark g-0 g-md-1" style="font-size: 18px;">--}}
+{{--                            {{$items->links() }}--}}
+{{--                        </div>--}}
                     </div>
                 </div>
             </div>
