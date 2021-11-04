@@ -13,18 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/item', [App\Http\Controllers\ItemController::class, 'index'])->name('item.index');
-Route::get('/item/create', [App\Http\Controllers\ItemController::class, 'create'])->name('item.create');
-Route::post('/item/create', [App\Http\Controllers\ItemController::class, 'store'])->name('item.store');
-Route::get('/item/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('item.edit');
-Route::put('/item/{id}/edit', [App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
-Route::get('/item/{id}/delete', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.delete');
+//Frontend
+Route::get('/', [App\Http\Controllers\FrontendController::class, 'index'])->name('frontend.index');
+Route::get('/order/{id}', [App\Http\Controllers\FrontendController::class, 'order'])->name('frontend.order');
+
+
+Route::group(['prefix'=>'admin',['middleware'=>'auth','admin']],function(){
+    Route::get('/item', [App\Http\Controllers\ItemController::class, 'index'])->name('item.index');
+    Route::get('/item/create', [App\Http\Controllers\ItemController::class, 'create'])->name('item.create');
+    Route::post('/item/create', [App\Http\Controllers\ItemController::class, 'store'])->name('item.store');
+    Route::get('/item/{id}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('item.edit');
+    Route::put('/item/{id}/edit', [App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
+    Route::get('/item/{id}/delete', [App\Http\Controllers\ItemController::class, 'destroy'])->name('item.delete');
+
+    Route::get('/order/store', [App\Http\Controllers\OrderController::class, 'index'])->name('order.store');
+
+});
 

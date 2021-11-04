@@ -50,6 +50,7 @@
                             <label for="category" class="text-white">Category</label>
                             <select name="category" class="form-control" style="color: grey">
                                 <option value="phone">Phone</option>
+                                <option value="laptop">Laptop</option>
                                 <option value="headphone">Head Phone</option>
                                 <option value="charging">Charging</option>
                                 <option value="cover">Cover</option>

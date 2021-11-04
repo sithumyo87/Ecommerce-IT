@@ -41,29 +41,32 @@
                                     <td>{{$item->category}}</td>
                                     <td>
                                         <a href="{{route('item.edit',$item->id)}}"><button class="btn btn-primary">Edit</button></a>
-
-                                        <form action="">
-                                            <a href="{{route('item.delete',$item->id)}}"><button class="btn btn-danger">Delete</button></a>
-                                            <div class="modal{{$item->id}}" tabindex="-1">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Modal title</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal{{$item->id}}" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Delete Confirmation</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Delete</button>
-                                                        </div>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{$item->id}}">
+                                            Delete
+                                        </button>
+                                    </td>
+                                    <form action="{{route('item.delete',$item->id)}}" method="POST">@csrf
+                                        @method('DELETE')
+                                        <div class="modal fade text-white" id="exampleModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header  bg-danger">
+                                                        <h5 class="modal-title  bg-danger" id="exampleModalLabel">Delete Confirmation</h5>
+                                                        <button type="button" class="close  " data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true" class="bg-danger text-white">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure to delete?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <a href="{{route('item.delete',$item->id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                        </form>
-                                    </td>
+                                        </div>
+                                    </form>
                                 </tr>
                             @endforeach
                             </tbody>

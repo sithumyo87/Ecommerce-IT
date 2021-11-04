@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemStoreRequest;
+use App\Http\Requests\UpdateItemRequest;
 class ItemController extends Controller
 {
     /**
@@ -78,7 +79,7 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateItemRequest $request, $id)
     {
         $item = Item::find($id);
         if($request->file()){
@@ -104,6 +105,7 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        return "Hello";
+        Item::find($id)->delete();
+        return redirect()->route('item.index')->with('message','Successfully Deleted');
     }
 }
